@@ -9,12 +9,16 @@ wss.on('connection', function connection(ws) {
 
     ws.on('message', function message(data) {
     console.log('received: %s', data);
+    if(data.toString()==="ping"){
+      ws.send("pong")
+    }
   });
 
-  setInterval(()=>{
-    ws.send("what is the price of solana"+Date.now())
+ //periodic sending 
+  // setInterval(()=>{
+  //   ws.send("what is the price of solana"+Date.now())
 
-  },2000)
+  // },2000)
 
-  ws.send('something');
+  ws.send('something happened once');
 });
